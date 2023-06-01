@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 function AdminView() {
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
 
   const [tableData, setTableData] = useState([]);
   const [updateTableSwitch, setUpdateTableSwitch] = useState(false);
@@ -42,8 +42,13 @@ function AdminView() {
       navigate('/signup');
     }
 
+    const handleSignOut = () => {
+      updateUser(null);
+    }
+
   return (
     <Box sx={{my:"auto" }}>
+        <Button onClick={handleSignOut} variant="outlined">Sign Out</Button>
         <Box sx={{paddingBottom:3 }}>Hello Admin {user.username}</Box>
         <CustomTable updateTableSwitch={updateTableSwitch} setUpdateTableSwitch={setUpdateTableSwitch} headers={headers} tableData={tableData}></CustomTable>
         <Button sx={{mt:3 }} onClick={handleClick} variant="contained">Add new user </Button>

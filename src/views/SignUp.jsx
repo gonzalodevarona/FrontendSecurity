@@ -3,12 +3,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
+
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link as RouterLink } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from '../UserContext';
 import { addUser } from '../services/AdminService';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,6 +17,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const navigate = useNavigate();
+
+  const { updateUser } = useContext(UserContext);
 
 
   const handleSubmit = async (event) => {
@@ -30,6 +33,11 @@ export default function SignUp() {
     navigate('/admin');
   };
 
+  const handleSignOut = () => {
+    updateUser(null);
+  }
+
+
   return (
     
       <Container component="main" maxWidth="xs">
@@ -41,6 +49,7 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
+          <Button onClick={handleSignOut} variant="outlined">Sign Out</Button>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>

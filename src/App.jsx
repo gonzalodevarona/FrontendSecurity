@@ -43,9 +43,34 @@ const Content = () => {
           }
         />
 
-        <Route path="/signup" element={<SignUp/>} />
-        <Route path="/user" element={<UserView/>} />
         
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute
+              redirectPath="/"
+              isAllowed={
+                user !== null && user.type.includes('USER')
+              }
+            >
+              <UserView/>
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route
+          path="/signup"
+          element={
+            <ProtectedRoute
+              redirectPath="/"
+              isAllowed={
+                user !== null && user.type.includes('ADMIN')
+              }
+            >
+              <SignUp/>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/admin"
           element={
