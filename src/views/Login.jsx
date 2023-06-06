@@ -1,24 +1,20 @@
-import LoginService from '../services/LoginService';
+import { login } from '../services/AuthService';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link as RouterLink } from "react-router-dom";
+import { setUser } from '../services/AuthService';
 import Swal from 'sweetalert2'
-import { useContext } from "react";
-import { UserContext } from '../UserContext';
 import { useNavigate } from 'react-router-dom';
 
 
 
 export default function SignIn() {
 
-  const { user, updateUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -26,23 +22,29 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     
-    if(username.length < 8 && password.length < 8 ){
-      Swal.fire({title:'Error: your username or password is too short', timer: 2500})
+    if(email.length < 8 && password.length < 8 ){
+      Swal.fire({title:'Error: your email or password is too short', timer: 2500})
     } else{
-      const result = await LoginService(data.get('username'), data.get('password'));
+
+      const result = await login(data.get('email'), data.get('password'));
+      console.log(result);
       
-      updateUser(result);
       
-      if(result !== null){
-        if(result.type === 'ADMIN'){
-          navigate('/admin');
-        }else{
-          navigate('/user');
-        }
+      if(result !== null) {
+        
+        const store = {token: result.token, id: result.user._id, name: result.user.name}
+        console.log(store);
+        setUser(store);
+        navigate('/');
+        window.location.reload(false);
       } else{
-        Swal.fire({title:'Error: wrong credentials', timer: 2500})
+        Swal.fire({title:'Error: no hay un usuario con estas credenciales', timer: 2900})
       }
     }
+  };
+
+  const handleSignUp = () => {
+    navigate('/signup');
   };
 
 
@@ -57,20 +59,21 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
+
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign In
+            Iniciar sesión en servicio de seguimiento de Almacenes Triunfo
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              id="username"
-              label="Username"
-              name="username"
+              id="email"
+              label="Correo electrónico"
+              name="email"
               type="text"
               autoFocus
             />
@@ -79,7 +82,7 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Contraseña"
               type="password"
               id="password"
               
@@ -93,6 +96,19 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: "flex-end ",
+                alignItems: "center",
+                gap:2,
+                mt:5
+              }}
+            >
+              <Box>¿No tienes cuenta?</Box>
+              <Button onClick={handleSignUp} variant="outlined">Crear cuenta</Button>
+            </Box>
 
           </Box>
         </Box>

@@ -1,0 +1,205 @@
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+    "name":"Gonzalo",
+    "lastName":"De Varona",
+    "contactNumber": 3127061823,
+    "role":"CEO",
+    "nameEnterprise":"DEVCO",
+    "idType": "CC", 
+    "id":"1006017477",
+    "email":"gavo00@hotmail.com",
+    "password":"prueba"
+    
+}
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODY1YTcwNjBhYzQzZmM1NGY3ODBmNSIsInJlc3RhdXJhbnROYW1lIjoiT2Rpc2VvIiwiaWF0IjoxNjY5NzQ5MzYwLCJleHAiOjE2Njk3NTI5NjB9.-eR1YNuZolg23NFQjWMNkwc6dQ2X1rMa3PQxkYwrsys
+####
+
+POST http://ec2-54-86-66-164.compute-1.amazonaws.com:3000/api/login
+Content-Type: application/json
+
+{
+    "email":"gavo00@hotmail.com",
+    "password":"prueba"
+}
+
+####
+
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "email":"gavo00@hotmail.com",
+    "password":"prueba"
+}
+
+####
+
+GET http://ec2-54-86-66-164.compute-1.amazonaws.com:3000/api/user/6474de78f9de44325fdc38df
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzRkZTc4ZjlkZTQ0MzI1ZmRjMzhkZiIsIm5hbWVFbnRlcnByaXNlIjoiREVWQ08iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNjg2MDQ4NDIzLCJleHAiOjE2ODYwNTIwMjN9._mfEnF-Jlixa6sdsw2kNwa1yuuPX3G2y1z4Slgu1nPY
+
+
+###
+
+
+GET http://ec2-54-86-66-164.compute-1.amazonaws.com:3000/api/updates/647583b12407ae9b4292ec6a
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzRkZTc4ZjlkZTQ0MzI1ZmRjMzhkZiIsIm5hbWVFbnRlcnByaXNlIjoiREVWQ08iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNjg2MDcxMzQ4LCJleHAiOjE2ODYwNzQ5NDh9.MXvrDVVjotS4oey-0byjBLKUO8l5YgEySRdGTIVuzQE
+
+####
+
+POST http://localhost:3000/api/batch
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzRkZTc4ZjlkZTQ0MzI1ZmRjMzhkZiIsIm5hbWVFbnRlcnByaXNlIjoiREVWQ08iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNjg1OTg0MzQxLCJleHAiOjE2ODU5ODc5NDF9.QX4KugbScN0Zj2JFT20alygAuEhjJTTtefnlMg9NHxM
+
+{
+    "dateProduced": "2023-05-28",
+    "productName": "Huevos de gallina feliz",
+    "producerName": "Avicola Santa Anita",
+    "isColdStorage": false,
+    "whoAddIt": "6474de78f9de44325fdc38df"  
+}
+
+###
+
+POST http://localhost:3000/api/update
+Content-Type: application/json
+
+{
+    "date": "2023-05-29",
+    "description": "Recepción del producto en centro de acopio a conformidad",
+    "batchId": "647583b12407ae9b4292ec6a",
+    "supplyChainUserId": "6474de78f9de44325fdc38df"
+}
+
+###
+
+
+GET http://ec2-54-86-66-164.compute-1.amazonaws.com:3000/api/batch/
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzRkZTc4ZjlkZTQ0MzI1ZmRjMzhkZiIsIm5hbWVFbnRlcnByaXNlIjoiREVWQ08iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNjg2MDM3MjA5LCJleHAiOjE2ODYwNDA4MDl9.AeOcL3IMJZdSajV0MmUu6pHB38LLdAbqr3M9jNSTUX4
+
+####
+
+GET http://localhost:3000/api/update/
+
+
+####
+
+
+POST http://localhost:3000/api/checkAuth
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzRkZTc4ZjlkZTQ0MzI1ZmRjMzhkZiIsIm5hbWVFbnRlcnByaXNlIjoiREVWQ08iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNjg1OTg0MzQxLCJleHAiOjE2ODU5ODc5NDF9.QX4KugbScN0Zj2JFT20alygAuEhjJTTtefnlMg9NHxM
+
+###
+
+PUT http://localhost:3000/api/admin
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+{
+    "restaurantAdminId":"63853aa9dd8e910f41df4b72",
+    "restaurantAdmin":{
+        "name": "Bustamante"
+    }
+}
+
+
+###
+GET http://localhost:3000/api/menu/63865a7060ac43fc54f780f5
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+
+
+
+// Category ENDPOINTS
+
+###
+POST http://localhost:3000/api/menu/category
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+{
+    "restaurantAdminId":"63865a7060ac43fc54f780f5",
+    "category":{
+        "name": "Carnes",
+        "bannerImg": "https://elmiradordeatienza.com/imagenes/el-mirador-de-atienza-restaurante-lomitos-de-corzo-carta-1600px.jpg'"
+
+    }
+}
+
+###
+DELETE http://localhost:3000/api/menu/category
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+{
+    "restaurantAdminId":"63865a7060ac43fc54f780f5",
+    "categoryId": "63865b4460ac43fc54f780f9"
+}
+
+###
+GET http://localhost:3000/api/menu/category/63865d1bcc38b6cf62d563f6
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+
+
+// Dish ENDPOINTS
+
+###
+GET http://localhost:3000/api/menu/category/dish
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+{
+    "categoryId":"63865bc560ac43fc54f780fe",
+    "dishId": "63865d9e60ac43fc54f7810e"
+}
+
+###
+POST http://localhost:3000/api/menu/category/dish
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+{
+    "categoryId":"63865bf260ac43fc54f78104",
+    "dish":{
+        "name": "Morrillo",
+        "description": "Suspendisse non tortor justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos",
+        "dishImg": "https://static.wixstatic.com/media/d269c2_c47abafbabf243cdab2ff1eafb7f8f28~mv2.jpg/v1/fit/w_1000%2Ch_678%2Cal_c%2Cq_80/file.jpg''",
+        "price": 38
+    }
+}
+
+###
+
+DELETE http://localhost:3000/api/menu/category/dish
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+{
+    "categoryId":"63865bf260ac43fc54f78104",
+    "dishId": "63866157752c4c8f25c2d2dc"
+}
+
+###
+
+PUT http://localhost:3000/api/menu/category/dish
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzJmYzczM2UzMzkxNzlmNjc3YTQxOCIsInJlc3RhdXJhbnROYW1lIjoiQ2FyYW1iYSIsImlhdCI6MTY2OTYxMTU0MywiZXhwIjoxNjY5NjE1MTQzfQ.7Xnf8LDvdEWcroM00i0Rne8NPp8KWu7qCdTuCpuimk8
+
+{
+    "categoryId":"6385925245f83736bde8b1fe",
+    "dishId": "63869f0a74758d39a4075e21",
+    "dish":{
+        "name": "melooo",
+        "description": "sopitaa",
+        "dishImg": "ok",
+        "price": 5,
+        "_id": "63866ae3c1cc6fbbbb8485b0"
+        
+    }
+}
+
