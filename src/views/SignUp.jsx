@@ -14,6 +14,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { setUser } from '../services/AuthService';
 
 
 
@@ -55,20 +56,17 @@ export default function SignUp() {
       password: data.get('password')
     }
     
-    const response = await createSupplyChainUser(newUser);
+    const result = await createSupplyChainUser(newUser);
 
-    console.log(response);
+    if (result !== null) {
+      const store = {token: result.token, id: result.user._id, name: result.user.name}
+      setUser(store);
+      navigate('/');
+      window.location.reload(false);
+    }
 
-    // if (response.data.accessToken) {
-    //   localStorage.setItem("user", JSON.stringify(response.data));
-    // }
-
-    navigate('/admin');
   };
 
-  const handleSignOut = () => {
-    updateUser(null);
-  }
 
   const handleSignIn = () => {
     navigate('/login');

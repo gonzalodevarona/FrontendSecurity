@@ -5,14 +5,13 @@ FROM node:18
 WORKDIR /app
 
 # Copiar los archivos de la aplicación
-COPY . .
+COPY package.json .
 
 # Instalar dependencias
 RUN npm install
 
-# Compilar la aplicación
-RUN npm run build
-
+# Copiar los archivos de la aplicación
+COPY . .
 # Puerto expuesto por la aplicación (ajústalo según tus necesidades)
 EXPOSE 5173
 
